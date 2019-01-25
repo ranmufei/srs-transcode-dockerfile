@@ -6,6 +6,7 @@ ADD ./starthttp.sh /srs/
 #RUN service apache2 start
 #WORKDIR /var/www/html/
 
-
-
+ADD ./rc.local /etc/
+# /bin/bash,-c,/etc/rc.local; /bin/bash
+ENTRYPOINT ["/bin/bash", "-c", "/etc/rc.local; /bin/bash"]
 
