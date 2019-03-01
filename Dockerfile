@@ -4,8 +4,8 @@ FROM ranmufei/srs:php5-transcode-server
 ARG FFMPEG_URL=http://www.linksame.com/img/ffmpeg-release-amd64-static.tar.xz
 #https://johnvansickle.com/ffmpeg/releases/ffmpeg-$FFMPEG_VERSION-64bit-static.tar.xz
 
-ADD ${FFMPEG_URL} /tmp/ffmpeg.tar.xz
-RUN cd /tmp && tar xJf ffmpeg.tar.xz
+ADD ${FFMPEG_URL} /tmp/ffmpeg-release-amd64-static.tar.xz
+RUN cd /tmp && tar xJf ffmpeg-release-amd64-static.tar.xz
 
 #FROM scratch
 
