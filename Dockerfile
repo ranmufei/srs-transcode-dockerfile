@@ -5,7 +5,7 @@ ARG FFMPEG_URL=http://www.linksame.com/img/ffmpeg-4.1.tar.gz
 #https://johnvansickle.com/ffmpeg/releases/ffmpeg-$FFMPEG_VERSION-64bit-static.tar.xz
 
 ADD ${FFMPEG_URL} /tmp/ffmpeg.tar.gz
-RUN cd /tmp && tar xJf ffmpeg.tar.gz
+RUN cd /tmp && tar -zxvf ffmpeg.tar.gz
 
 #FROM scratch
 
