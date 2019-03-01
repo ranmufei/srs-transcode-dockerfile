@@ -1,11 +1,11 @@
 FROM ranmufei/srs:php5-transcode-server
 
 # 重新安装ffmpeg 4.1
-ARG FFMPEG_URL=http://www.linksame.com/img/ffmpeg-release-amd64-static.tar.xz
+ARG FFMPEG_URL=http://www.linksame.com/img/ffmpeg-4.1.tar.gz
 #https://johnvansickle.com/ffmpeg/releases/ffmpeg-$FFMPEG_VERSION-64bit-static.tar.xz
 
-ADD ${FFMPEG_URL} /tmp/ffmpeg-release-amd64-static.tar.xz
-RUN cd /tmp && tar xJf ffmpeg-release-amd64-static.tar.xz
+ADD ${FFMPEG_URL} /tmp/ffmpeg.tar.gz
+RUN cd /tmp && tar xJf ffmpeg.tar.gz
 
 #FROM scratch
 
