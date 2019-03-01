@@ -138,14 +138,14 @@ class ffmpeg
         // -c:v libx264 -b:v 720k -s 864x480 -c:a aac -strict  -2
         switch ($proto) {
             case 'http':
-                $str = "/srs/objs/ffmpeg/bin/ffmpeg -re -i  '" . $rtsp . "' -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
+                $str = "ffmpeg -re -i  '" . $rtsp . "' -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
                 break;
 
             case 'rtsp':
-                $str = "/srs/objs/ffmpeg/bin/ffmpeg -rtsp_transport tcp -re -i  '" . $rtsp . "' -c:a copy -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
+                $str = "ffmpeg -rtsp_transport tcp -re -i  '" . $rtsp . "' -c:a copy -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
                 break;
             default:
-                $str = "/srs/objs/ffmpeg/bin/ffmpeg -rtsp_transport tcp -re -i  '" . $rtsp . "' -c:a copy -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
+                $str = "ffmpeg -rtsp_transport tcp -re -i  '" . $rtsp . "' -c:a copy -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
                 break;
         }
 
