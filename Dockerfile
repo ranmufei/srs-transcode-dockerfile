@@ -11,6 +11,7 @@ RUN cd /tmp && tar -zxvf ffmpeg.tar.gz
 
 run cp /tmp/ffmpeg*/ffmpeg /bin/
 
+run chmod +x /bin/ffmpeg
 
 ADD ./runffmpeg.php /var/www/html/
 ADD ./docker.conf /srs/conf/
