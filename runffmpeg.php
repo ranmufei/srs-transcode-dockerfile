@@ -131,7 +131,7 @@ class ffmpeg
         
         $play = time();
         $date = date('Y/m',time());
-        $playurl = "/live/$date/livestream_{$b}_$play";      
+        $playurl = "rtmp://srs-docker-rmf:1935/live/$date/livestream_{$b}_$play"; 
         $proto = substr($rtsp, 0, 4);
         // -c:v libx264 -b:v 720k -s 864x480 -c:a aac -strict  -2
         switch ($proto) {
