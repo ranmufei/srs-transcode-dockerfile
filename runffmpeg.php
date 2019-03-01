@@ -131,7 +131,9 @@ class ffmpeg
         
         $play = time();
         $date = date('Y/m',time());
-        $playurl = "rtmp://srs-docker-rmf:1935/live/$date/livestream_{$b}_$play"; 
+        $transcode_contenner = 'rtmp://srs-docker-rmf:1935';
+        $app_path = "/live/$date/livestream_{$b}_$play";
+        $playurl = $transcode_contenner.$app_path; 
         $proto = substr($rtsp, 0, 4);
         // -c:v libx264 -b:v 720k -s 864x480 -c:a aac -strict  -2
         switch ($proto) {
@@ -151,10 +153,10 @@ class ffmpeg
         //$info['ipinfo'] = $this->check($rtsp);
         $pid = exec($str, $output);
         $info['pid'] = $pid;
-        $info['playurl'] = $playurl.'.mp4';
+        $info['playurl'] = $app_path.'.mp4';
         $info['str'] = $str;
         $info['rtsp'] = $rtsp;
-        $info['playpath'] = $domain ? $domain : 'rtmp://transcode.fengkong.bbg.com.cn:1935' . "/live/livestream_$play";
+        //$info['playpath'] = $domain ? $domain : 'rtmp://transcode.fengkong.bbg.com.cn:1935' . "/live/livestream_$play";
         return $info;
     }
     /**
