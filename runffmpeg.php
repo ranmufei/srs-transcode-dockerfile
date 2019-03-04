@@ -177,7 +177,7 @@ class ffmpeg
                 break;
             case '720':
                 $data['s'] = '960x720';
-                $data['b'] = '720k';
+                $data['b'] = '1000k';
                 break;
             default:
                 $data['s'] = '864x480';
