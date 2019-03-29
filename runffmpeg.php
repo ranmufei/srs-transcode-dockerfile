@@ -133,12 +133,13 @@ class ffmpeg
         $date = date('Y/m',time());
         $transcode_contenner = 'rtmp://srs-docker-rmf:1935';
         $app_path = "/live/$date/livestream_{$b}_$play";
+        $mp4path = $app_path.'.mp4';
         $playurl = $transcode_contenner.$app_path; 
         $proto = substr($rtsp, 0, 4);
         // -c:v libx264 -b:v 720k -s 864x480 -c:a aac -strict  -2
         switch ($proto) {
             case 'http':
-                $str = "ffmpeg -re -i  " . $rtsp . " -c:v libx264  -b:v $b -s $s -f flv $playurl >  /dev/null 2>&1 & echo $!;";
+                $str = "ffmpeg -re -i  " . $rtsp . " -c:v libx264  -b:v $b -s $s -y -f mp4 /srs/objs/nginx/html/$mp4path >  /dev/null 2>&1 & echo $!;";
                 break;
 
             case 'rtsp':
@@ -153,7 +154,7 @@ class ffmpeg
         //$info['ipinfo'] = $this->check($rtsp);
         $pid = exec($str, $output);
         $info['pid'] = $pid;
-        $info['playurl'] = $app_path.'.mp4';
+        $info['playurl'] = $mp4path;
         $info['str'] = $str;
         $info['rtsp'] = $rtsp;
         //$info['playpath'] = $domain ? $domain : 'rtmp://transcode.fengkong.bbg.com.cn:1935' . "/live/livestream_$play";
