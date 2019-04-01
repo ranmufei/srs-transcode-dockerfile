@@ -12,7 +12,11 @@ FROM ranmufei/srs-php5-transcode-server:ffmpeg4.1.1
 
 #run cp /tmp/ffmpeg*/ffmpeg /bin/
 
-#run chmod +x /bin/ffmpeg
+run chmod +x /bin/ffmpeg
+RUN chown www-data:www-data /bin/ffmpeg
+RUN chown www-data:www-data /srs/objs/nginx/html/ -R
+
+
 
 ADD ./runffmpeg.php /var/www/html/
 ADD ./docker.conf /srs/conf/
